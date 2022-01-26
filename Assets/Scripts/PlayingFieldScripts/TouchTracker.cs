@@ -30,9 +30,9 @@ public class TouchTracker : MonoBehaviour
     private void Wath()
     {
         RaycastHit hit;
-        Touch touch = Input.GetTouch(0);
-        var ray = Camera.main.ScreenPointToRay(touch.position);
-        //var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //Touch touch = Input.GetTouch(0);
+        //var ray = Camera.main.ScreenPointToRay(touch.position);
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             _position = hit.point;

@@ -14,7 +14,7 @@ public class BallCollisionsController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "CueBall")
+        if (collision.gameObject.GetComponent<CueBall>() != null)
         {
             var force = collision.relativeVelocity;
             _rigidbody.velocity = force.magnitude / 2 * _direction;

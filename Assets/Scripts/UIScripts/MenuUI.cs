@@ -9,7 +9,7 @@ public class MenuUI : MonoBehaviour
     private void Start()
     {
         _startButton.onClick.AddListener(StartNewGame);
-        _exitButton.onClick.AddListener(() => Application.Quit());
+        _exitButton.onClick.AddListener(Application.Quit);
     }
 
     private void StartNewGame()

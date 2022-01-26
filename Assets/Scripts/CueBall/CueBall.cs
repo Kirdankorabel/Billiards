@@ -3,6 +3,7 @@
 public class CueBall : MonoBehaviour
 {
     public bool isMove = false;
+    public float hitMultiplier = 400;
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private CueBallTracker _cueBallTracker;
     private Vector3 _direction;
@@ -22,7 +23,7 @@ public class CueBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ball")
+        if (collision.gameObject.GetComponent<BallCollisionsController>() != null)
         {
             var force = _rigidbody.velocity;
             _rigidbody.velocity = force.magnitude / 2 * _direction;
@@ -37,7 +38,7 @@ public class CueBall : MonoBehaviour
     {
         if (isMove) return;
         _direction = (transform.position - position).normalized;
-        _rigidbody.AddForce(_direction * (transform.position - position).magnitude * 400);
+        _rigidbody.AddForce(_direction * (transform.position - position).magnitude * hitMultiplier);
     }
 }
 
